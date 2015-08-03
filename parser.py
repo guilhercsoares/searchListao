@@ -12,16 +12,18 @@ class Parser(HTMLParser):
 		for a in attr:
 			if(a[0] == "class"):
 				if(a[1] == "span1"):
-					print "Inscricao:"
+					print "},"
+					print "{"
+					sys.stdout.write("inscricao: ")
 				elif(a[1] == "span2"):
-					print "Nome:"
+					sys.stdout.write("nome: ")
 				elif(a[1] == "span3"):
-					print "Semestre:"
+					sys.stdout.write("semestre: ")
 				elif(a[1] == "span4"):
-					print "Curso:"
+					sys.stdout.write("curso: ")
 
 	def handle_data(self, data):
-		print data
+		print data,","
 
 def main():
 	url = sys.argv[1]
@@ -29,6 +31,7 @@ def main():
 	page = response.read()
 	p = Parser()
 	p.feed(page)
+	print '}'
 
 if __name__ == "__main__":
 	main()
